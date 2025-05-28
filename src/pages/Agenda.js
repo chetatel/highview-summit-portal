@@ -1,49 +1,69 @@
 import React from 'react';
 
-export default function Agenda() {
-  const agendaItems = [
-    { time: 'Thursday, September 12, 2025', details: [
-      { time: '12:00 PM – 5:00 PM', event: 'Registration & Welcome Reception' },
-      { time: '5:30 PM – 7:00 PM', event: 'Opening Dinner & Networking' },
-    ]},
-    { time: 'Friday, September 13, 2025', details: [
-      { time: '8:00 AM – 9:00 AM', event: 'Breakfast & Networking' },
-      { time: '9:00 AM – 10:30 AM', event: 'Keynote: Market Outlook' },
-      { time: '10:45 AM – 12:00 PM', event: 'Panel Discussion: Investment Strategies' },
-      { time: '12:00 PM – 1:30 PM', event: 'Lunch' },
-      { time: '1:30 PM – 3:00 PM', event: 'Breakout Sessions' },
-      { time: '3:15 PM – 4:30 PM', event: 'Workshops' },
-      { time: '6:00 PM – 8:00 PM', event: 'Evening Social Event' },
-    ]},
-    { time: 'Saturday, September 14, 2025', details: [
-      { time: '8:00 AM – 9:00 AM', event: 'Breakfast' },
-      { time: '9:00 AM – 11:00 AM', event: 'Industry Deep Dive Sessions' },
-      { time: '11:15 AM – 12:30 PM', event: 'Roundtable Discussions' },
-      { time: '12:30 PM – 2:00 PM', event: 'Lunch' },
-      { time: '2:00 PM – 4:00 PM', event: 'Networking Activities & Closing Remarks' },
-      { time: '7:00 PM – 10:00 PM', event: 'Gala Dinner & Awards' },
-    ]},
-    { time: 'Sunday, September 15, 2025', details: [
-      { time: '9:00 AM – 12:00 PM', event: 'Optional City Tours & Farewell Brunch' },
-    ]},
-  ];
+const agenda = [
+  {
+    day: 'Friday, September 12',
+    events: [
+      { time: '3:00 PM', title: 'Check-In & Welcome Reception' },
+      { time: '6:00 PM', title: 'Welcome Dinner at Halcyon Rooftop' },
+    ],
+  },
+  {
+    day: 'Saturday, September 13',
+    events: [
+      { time: '8:00 AM', title: 'Breakfast & Networking' },
+      { time: '9:00 AM', title: 'Opening Remarks by Steve Russell' },
+      { time: '9:30 AM', title: 'Strategic Vision Presentation' },
+      { time: '11:00 AM', title: 'Panel: Growth Stories from the Portfolio' },
+      { time: '12:30 PM', title: 'Lunch Break' },
+      { time: '2:00 PM', title: 'Breakout Workshops (Finance, Ops, HR)' },
+      { time: '4:00 PM', title: 'Fireside Chat: Innovation in Private Equity' },
+      { time: '7:00 PM', title: 'Group Dinner at Matsuhisa Denver' },
+    ],
+  },
+  {
+    day: 'Sunday, September 14',
+    events: [
+      { time: '9:00 AM', title: 'Breakfast Roundtables by Role' },
+      { time: '10:30 AM', title: 'Interactive Session: Building Culture Remotely' },
+      { time: '12:00 PM', title: 'Lunch at The Jacquard Hotel' },
+      { time: '2:00 PM', title: 'Free Time / Optional Activities' },
+    ],
+  },
+  {
+    day: 'Monday, September 15',
+    events: [
+      { time: '8:00 AM', title: 'Closing Brunch & Takeaways' },
+      { time: '10:00 AM', title: 'Departures' },
+    ],
+  },
+];
 
+export default function Agenda() {
   return (
-    <div className="max-w-4xl mx-auto mt-12 px-6">
-      <h2 className="text-4xl font-bold mb-8">Highview Capital Annual Summit Agenda</h2>
-      {agendaItems.map(({ time, details }) => (
-        <div key={time} className="mb-10">
-          <h3 className="text-2xl font-semibold mb-4 text-blue-700">{time}</h3>
-          <ul className="list-disc list-inside space-y-2 text-gray-800">
-            {details.map(({ time, event }) => (
-              <li key={time} className="flex justify-between">
-                <span className="font-medium">{time}</span>
-                <span>{event}</span>
+    <section className="max-w-4xl mx-auto px-4 py-20">
+      <h2 className="text-4xl font-bold text-center text-blue-800 mb-12">
+        Summit Agenda
+      </h2>
+
+      <img
+        src="/images/event-crowd.jpg"
+        alt="Summit attendees networking"
+        className="rounded-xl shadow-lg mb-10 mx-auto"
+      />
+
+      {agenda.map((dayItem, index) => (
+        <div key={index} className="mb-10">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">{dayItem.day}</h3>
+          <ul className="space-y-2">
+            {dayItem.events.map((event, idx) => (
+              <li key={idx} className="text-gray-700">
+                <span className="font-semibold">{event.time}</span> — {event.title}
               </li>
             ))}
           </ul>
         </div>
       ))}
-    </div>
+    </section>
   );
 }

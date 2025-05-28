@@ -1,5 +1,6 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -13,20 +14,22 @@ import Contact from './pages/Contact';
 export default function App() {
   return (
     <Router>
-      <nav style={{ padding: '1rem', backgroundColor: '#f5f5f5' }}>
-        <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-        <Link to="/about" style={{ marginRight: '1rem' }}>About</Link>
-        <Link to="/agenda" style={{ marginRight: '1rem' }}>Agenda</Link>
-        <Link to="/documents" style={{ marginRight: '1rem' }}>Documents</Link>
-        <Link to="/feedback" style={{ marginRight: '1rem' }}>Feedback</Link>
-        <Link to="/media" style={{ marginRight: '1rem' }}>Media</Link>
-        <Link to="/speakers" style={{ marginRight: '1rem' }}>Speakers</Link>
-        <Link to="/contact" style={{ marginRight: '1rem' }}>Contact</Link>
+      <nav className="p-4 bg-gray-100 text-center">
+        <Link to="/home" className="mx-2 text-blue-700 hover:underline">Home</Link>
+        <Link to="/about" className="mx-2 text-blue-700 hover:underline">About</Link>
+        <Link to="/agenda" className="mx-2 text-blue-700 hover:underline">Agenda</Link>
+        <Link to="/documents" className="mx-2 text-blue-700 hover:underline">Documents</Link>
+        <Link to="/feedback" className="mx-2 text-blue-700 hover:underline">Feedback</Link>
+        <Link to="/media" className="mx-2 text-blue-700 hover:underline">Media</Link>
+        <Link to="/speakers" className="mx-2 text-blue-700 hover:underline">Speakers</Link>
+        <Link to="/contact" className="mx-2 text-blue-700 hover:underline">Contact</Link>
       </nav>
 
-      <main style={{ padding: '1rem' }}>
+      <main className="p-6">
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* Default to Home if at root */}
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/documents" element={<Documents />} />
@@ -34,6 +37,7 @@ export default function App() {
           <Route path="/media" element={<Media />} />
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </main>
     </Router>

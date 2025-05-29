@@ -1,6 +1,7 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,6 +15,8 @@ import Contact from './pages/Contact';
 export default function App() {
   return (
     <Router basename="/highview-summit-portal">
+      <Toaster position="top-center" reverseOrder={false} />
+
       <nav className="p-4 bg-gray-100">
         <Link to="/home" className="mr-6 text-highviewBlue hover:underline">Home</Link>
         <Link to="/about" className="mr-6 text-highviewBlue hover:underline">About</Link>

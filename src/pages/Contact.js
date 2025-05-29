@@ -1,23 +1,55 @@
 import React, { useState } from 'react';
+import confetti from 'canvas-confetti';
+import toast from 'react-hot-toast';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
+    formType: 'Contact',
   });
   const [submitted, setSubmitted] = useState(false);
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  }
+  };
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Integrate with backend or email API for real submissions
-    setSubmitted(true);
-  }
+
+    const formspreeURL = 'https://formspree.io/f/manorglp'; // your Formspree URL here
+
+    toast.loading('Sending your message...', { id: 'submitToast' });
+
+    try {
+      const response = await fetch(formspreeURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Form submission failed with status ${response.status}`);
+      }
+
+      setSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+        formType: 'Contact',
+      });
+
+      confetti();
+
+      toast.success('Message sent successfully!', { id: 'submitToast' });
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast.error('Oops! Something went wrong. Please try again later.', { id: 'submitToast' });
+    }
+  };
 
   return (
     <section id="contact" className="bg-gray-50 py-20 text-gray-800">
@@ -39,6 +71,8 @@ export default function Contact() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 shadow-lg rounded-lg">
+            <input type="hidden" name="formType" value="Contact" />
+
             <div>
               <label htmlFor="name" className="block mb-1 font-semibold">
                 Your Name

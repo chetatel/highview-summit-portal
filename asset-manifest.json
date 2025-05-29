@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/highview-summit-portal/static/css/main.be19899e.css",
-    "main.js": "/highview-summit-portal/static/js/main.967e79be.js",
+    "main.css": "/highview-summit-portal/static/css/main.1ea2924e.css",
+    "main.js": "/highview-summit-portal/static/js/main.6321191e.js",
     "index.html": "/highview-summit-portal/index.html",
-    "main.be19899e.css.map": "/highview-summit-portal/static/css/main.be19899e.css.map",
-    "main.967e79be.js.map": "/highview-summit-portal/static/js/main.967e79be.js.map"
+    "main.1ea2924e.css.map": "/highview-summit-portal/static/css/main.1ea2924e.css.map",
+    "main.6321191e.js.map": "/highview-summit-portal/static/js/main.6321191e.js.map"
   },
   "entrypoints": [
-    "static/css/main.be19899e.css",
-    "static/js/main.967e79be.js"
+    "static/css/main.1ea2924e.css",
+    "static/js/main.6321191e.js"
   ]
 }

@@ -1,116 +1,100 @@
-// src/pages/Feedback.js
 import React, { useState } from 'react';
 
 export default function Feedback() {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     name: '',
     email: '',
-    feedback: '',
+    message: '',
   });
+
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      // 1. Submit to Google Sheets
-      await fetch('https://script.google.com/macros/s/AKfycbyQsMVEPY3lps-4vkZrSRWHYXTtWC3RusCQAo9NYhdY6KR5LP3uPqFxg51h88PE4cP3gA/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+    // TODO: Add integration for Google Apps Script + Formspree/EmailJS here
 
-      // 2. Submit to Formspree
-      await fetch('https://formspree.io/f/xdkgqple', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      setSubmitted(true);
-    } catch (error) {
-      console.error('Submission failed:', error);
-    }
+    console.log('Feedback submitted:', form);
+    setSubmitted(true);
+    setForm({ name: '', email: '', message: '' });
   };
 
   return (
-    <section className="max-w-3xl mx-auto px-4 py-20 bg-gray-50 rounded-lg shadow-md">
-      <h2 className="text-3xl font-bold text-center text-blue-800 mb-8">
-        We Value Your Feedback
+    <section className="max-w-3xl mx-auto px-4 py-20">
+      <h2 className="text-4xl font-bold text-center text-highviewBlue mb-8">
+        Share Your Feedback
       </h2>
 
-      {submitted ? (
-        <p className="text-center text-green-600 font-semibold text-lg">
-          Thank you for sharing your feedback! Dani will review it promptly.
-        </p>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
+      <img
+        src="images/feedback.jpg"
+        alt="Feedback concept"
+        className="rounded-xl shadow-lg mb-10 mx-auto w-full max-h-[400px] object-cover"
+        loading="lazy"
+      />
+
+      <p className="text-center text-gray-600 mb-8">
+        We value your thoughts on the 2025 Highview Capital Annual Summit. Your feedback helps us continuously improve and elevate the experience year after year.
+      </p>
+
+      {!submitted ? (
+        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl shadow">
           <div>
-            <label htmlFor="name" className="block mb-2 font-semibold text-gray-700">
+            <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1">
               Name
             </label>
             <input
-              id="name"
-              name="name"
               type="text"
+              name="name"
               required
-              value={formData.name}
+              value={form.name}
               onChange={handleChange}
-              placeholder="Your Name"
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-highviewBlue"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block mb-2 font-semibold text-gray-700">
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
               Email
             </label>
             <input
-              id="email"
-              name="email"
               type="email"
+              name="email"
               required
-              value={formData.email}
+              value={form.email}
               onChange={handleChange}
-              placeholder="you@example.com"
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-highviewBlue"
             />
           </div>
 
           <div>
-            <label htmlFor="feedback" className="block mb-2 font-semibold text-gray-700">
-              Your Feedback
+            <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1">
+              Message
             </label>
             <textarea
-              id="feedback"
-              name="feedback"
+              name="message"
               rows="5"
               required
-              value={formData.feedback}
+              value={form.message}
               onChange={handleChange}
-              placeholder="Share your thoughts or suggestions"
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-highviewBlue"
+            ></textarea>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-700 text-white py-3 rounded font-semibold hover:bg-blue-800 transition"
+            className="w-full bg-highviewBlue text-white py-3 rounded hover:bg-blue-900 transition"
           >
             Submit Feedback
           </button>
         </form>
+      ) : (
+        <div className="bg-green-100 text-green-800 p-6 rounded text-center shadow">
+          Thank you for your feedback! We appreciate your insights and support.
+        </div>
       )}
     </section>
   );

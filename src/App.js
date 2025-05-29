@@ -13,22 +13,21 @@ import Contact from './pages/Contact';
 
 export default function App() {
   return (
-    <Router>
-      <nav className="p-4 bg-gray-100 text-center">
-        <Link to="/home" className="mx-2 text-blue-700 hover:underline">Home</Link>
-        <Link to="/about" className="mx-2 text-blue-700 hover:underline">About</Link>
-        <Link to="/agenda" className="mx-2 text-blue-700 hover:underline">Agenda</Link>
-        <Link to="/documents" className="mx-2 text-blue-700 hover:underline">Documents</Link>
-        <Link to="/feedback" className="mx-2 text-blue-700 hover:underline">Feedback</Link>
-        <Link to="/media" className="mx-2 text-blue-700 hover:underline">Media</Link>
-        <Link to="/speakers" className="mx-2 text-blue-700 hover:underline">Speakers</Link>
-        <Link to="/contact" className="mx-2 text-blue-700 hover:underline">Contact</Link>
+    <Router basename="/highview-summit-portal">
+      <nav className="p-4 bg-gray-100">
+        <Link to="/home" className="mr-6 text-highviewBlue hover:underline">Home</Link>
+        <Link to="/about" className="mr-6 text-highviewBlue hover:underline">About</Link>
+        <Link to="/agenda" className="mr-6 text-highviewBlue hover:underline">Agenda</Link>
+        <Link to="/documents" className="mr-6 text-highviewBlue hover:underline">Documents</Link>
+        <Link to="/feedback" className="mr-6 text-highviewBlue hover:underline">Feedback</Link>
+        <Link to="/media" className="mr-6 text-highviewBlue hover:underline">Media</Link>
+        <Link to="/speakers" className="mr-6 text-highviewBlue hover:underline">Speakers</Link>
+        <Link to="/contact" className="mr-6 text-highviewBlue hover:underline">Contact</Link>
       </nav>
 
       <main className="p-6">
         <Routes>
-          {/* Default to Home if at root */}
-          <Route index element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/agenda" element={<Agenda />} />
@@ -37,7 +36,6 @@ export default function App() {
           <Route path="/media" element={<Media />} />
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </main>
     </Router>

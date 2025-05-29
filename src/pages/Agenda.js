@@ -1,3 +1,4 @@
+// src/pages/Agenda.js
 import React from 'react';
 
 const agenda = [
@@ -42,12 +43,12 @@ const agenda = [
 export default function Agenda() {
   return (
     <section className="max-w-4xl mx-auto px-4 py-20">
-      <h2 className="text-4xl font-bold text-center text-blue-800 mb-12">
+      <h2 className="text-4xl font-bold text-center text-highviewBlue mb-12">
         Summit Agenda
       </h2>
 
       <img
-        src="/images/event-crowd.jpg"
+        src={`${process.env.PUBLIC_URL}/images/event-crowd.jpg`}
         alt="Summit attendees networking"
         className="rounded-xl shadow-lg mb-10 mx-auto"
       />

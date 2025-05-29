@@ -20,11 +20,17 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 text-gray-800">
-      <div className="container mx-auto px-4 max-w-xl">
-        <h3 className="text-4xl font-bold text-center text-blue-800 mb-10">
+    <section id="contact" className="bg-gray-50 py-20 text-gray-800">
+      <div className="max-w-4xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center text-highviewBlue mb-10">
           Contact the Summit Team
-        </h3>
+        </h2>
+
+        <img
+          src="images/contact-team.jpg"
+          alt="Summit team in discussion"
+          className="rounded-xl shadow-lg mb-12 mx-auto w-full max-h-[400px] object-cover"
+        />
 
         {submitted ? (
           <div className="text-center text-green-700 text-lg font-medium">
@@ -32,7 +38,7 @@ export default function Contact() {
             <p>Dani will respond shortly.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 shadow rounded">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 shadow-lg rounded-lg">
             <div>
               <label htmlFor="name" className="block mb-1 font-semibold">
                 Your Name
@@ -45,7 +51,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="Jane Doe"
-                className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-highviewBlue"
               />
             </div>
 
@@ -61,7 +67,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="jane@example.com"
-                className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-highviewBlue"
               />
             </div>
 
@@ -77,13 +83,13 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="Ask a question, request info, etc."
-                className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-highviewBlue"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-blue-700 text-white py-3 rounded font-semibold hover:bg-blue-800 transition"
+              className="w-full bg-highviewBlue text-white py-3 rounded font-semibold hover:bg-blue-900 transition"
             >
               Send Message
             </button>
@@ -98,13 +104,19 @@ export default function Contact() {
             Email:{' '}
             <a
               href="mailto:dani@highviewcapital.com"
-              className="text-blue-700 hover:underline"
+              className="text-highviewBlue hover:underline"
             >
               dani@highviewcapital.com
             </a>
           </p>
           <p>
-            Phone: <a href="tel:+17602848557" className="text-blue-700 hover:underline">(760) 284-8557</a>
+            Phone:{' '}
+            <a
+              href="tel:+17602848557"
+              className="text-highviewBlue hover:underline"
+            >
+              (760) 284-8557
+            </a>
           </p>
           <p className="mt-4 font-semibold">Office Address:</p>
           <address className="not-italic text-gray-700">

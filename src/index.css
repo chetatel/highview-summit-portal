@@ -1,3 +1,20 @@
+/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Global Styles */
+body {
+  @apply bg-white text-gray-800;
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-highviewBlue;
+}
+
+a {
+  @apply text-highviewBlue hover:underline;
+}
+
+/* Add any custom utility or component overrides below */

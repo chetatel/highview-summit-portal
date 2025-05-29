@@ -4,13 +4,13 @@ const mediaItems = [
   {
     title: '2024 Summit Recap',
     description: 'Highlights from last year’s event in Scottsdale, Arizona.',
-    imgSrc: '/images/media-recap.jpg',
-    videoLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    imgSrc: 'images/conference-recap.jpg',
+    videoLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Replace with real video if you have it
   },
   {
     title: 'Highview Culture & Events',
     description: 'A glimpse into the culture and community behind Highview Capital.',
-    imgSrc: '/images/event-crowd.jpg',
+    imgSrc: 'images/event-crowd.jpg',
     videoLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   },
 ];
@@ -18,7 +18,7 @@ const mediaItems = [
 export default function Media() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-20">
-      <h2 className="text-4xl font-bold text-center text-blue-800 mb-12">
+      <h2 className="text-4xl font-bold text-center text-highviewBlue mb-12">
         Summit Media Highlights
       </h2>
 
@@ -36,19 +36,16 @@ export default function Media() {
               src={item.imgSrc}
               alt={item.title}
               className="w-full h-64 object-cover"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/images/placeholder.jpg'; // fallback image if original fails
-              }}
+              loading="lazy"
             />
             <div className="p-6">
-              <h3 className="text-2xl font-semibold text-blue-700 mb-2">{item.title}</h3>
+              <h3 className="text-2xl font-semibold text-highviewBlue mb-2">{item.title}</h3>
               <p className="text-gray-600 mb-4">{item.description}</p>
               <a
                 href={item.videoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition"
+                className="inline-block bg-highviewBlue text-white px-4 py-2 rounded hover:bg-blue-800 transition"
               >
                 Watch Video
               </a>

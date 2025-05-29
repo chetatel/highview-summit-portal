@@ -59,7 +59,7 @@ export default function Feedback() {
         </h2>
 
         <img
-          src="images/summit-feedback.jpg"
+          src="images/feedback.jpg"
           alt="Summit feedback session"
           className="rounded-xl shadow-lg mb-12 mx-auto w-full max-h-[400px] object-cover"
         />
